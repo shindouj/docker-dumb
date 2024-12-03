@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '0 */6 * * *'
+    - cron: '0 */6 * * *'
 
 jobs:
   build-push:
@@ -16,14 +16,14 @@ jobs:
     - name: Get latest commit hash
       id: get-latest-commit
       run: |
-        echo "::set-output name=commit::$(git ls-remote https://github.com/zyachel/libremdb.git | head -n1 | awk '{print $1;}')"
+        echo "::set-output name=commit::$(git ls-remote https://github.com/rramiachraf/dumb.git | head -n1 | awk '{print $1;}')"
       shell: bash
 
     - uses: actions/cache@v4
       id: cache
       with:
-        path: libremdb-built
-        key: ${{ runner.os }}-${{ steps.get-latest-commit.outputs.commit }}-${{ hashFiles('**/lockfiles') }}
+        path: dumb-built
+        key: ${{ runner.os }}-dumb-${{ steps.get-latest-commit.outputs.commit }}-${{ hashFiles('**/lockfiles') }}
 
     # arm64 specific
     - name: Set up QEMU
@@ -53,12 +53,12 @@ jobs:
         file: docker/Dockerfile
         platforms: linux/amd64,linux/arm64/v8
         push: true
-        tags: ghcr.io/shindouj/libremdb:latest
+        tags: ghcr.io/shindouj/dumb:latest
         build-args: release=1
     
     - name: Set cache key
       if: steps.cache.outputs.cache-hit != 'true'
-      run: echo "done" > libremdb-built
+      run: echo "done" > dumb-built
         
   workflow-keepalive:
     if: github.event_name == 'schedule'
