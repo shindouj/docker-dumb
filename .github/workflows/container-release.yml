@@ -39,10 +39,6 @@ jobs:
     - name: Check Out Repo
       if: steps.cache.outputs.cache-hit != 'true'
       uses: actions/checkout@v4
-
-    - uses: actions/setup-go@v5
-      with:
-        go-version-file: go.mod
     
     - name: login into github package registry
       if: steps.cache.outputs.cache-hit != 'true'
