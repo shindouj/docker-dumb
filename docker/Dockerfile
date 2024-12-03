@@ -21,6 +21,6 @@ COPY --from=build /code/dumb .
 COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
 EXPOSE 5555/tcp
-HEALTHCHECK  --interval=5m --timeout=3s CMD wget --no-verbose --tries=1 --spider http://localhost:5555 || exit 1
+HEALTHCHECK  --interval=1m --timeout=3s CMD wget --no-verbose --tries=1 --spider http://localhost:5555 || exit 1
 
 CMD ["./dumb"]
