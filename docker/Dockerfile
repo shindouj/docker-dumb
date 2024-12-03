@@ -1,4 +1,4 @@
-FROM docker.io/golang:1.22.2-alpine3.19 AS build
+FROM docker.io/golang:1.23.3-alpine3.19 AS build
 
 RUN apk add make git curl
 
