@@ -2,7 +2,6 @@ services:
   dumb:
     container_name: dumb
     image: ghcr.io/shindouj/dumb:latest
-    network_mode: service:cloudflare
     restart: unless-stopped
     user: nobody
     read_only: true
