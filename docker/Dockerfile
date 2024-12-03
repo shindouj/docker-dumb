@@ -1,6 +1,7 @@
 FROM docker.io/golang:1.22.2-alpine3.19 AS build
 
 RUN apk add make git curl
+RUN git clone --depth=1 https://github.com/rramiachraf/dumb.git /code
 
 WORKDIR /code
 
