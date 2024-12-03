@@ -5,11 +5,7 @@ RUN apk add make git curl
 WORKDIR /code
 
 RUN git clone --depth=1 https://github.com/rramiachraf/dumb.git .
-COPY go.mod go.sum ./
 RUN go mod download
-
-COPY . .
-COPY .git .
 RUN make build
 
 ###############################################################
