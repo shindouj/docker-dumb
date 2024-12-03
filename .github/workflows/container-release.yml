@@ -35,11 +35,14 @@ jobs:
     - name: Set up Docker Buildx
       if: steps.cache.outputs.cache-hit != 'true'
       uses: docker/setup-buildx-action@v3
-    # arm64 specific
 
     - name: Check Out Repo
       if: steps.cache.outputs.cache-hit != 'true'
       uses: actions/checkout@v4
+
+    - uses: actions/setup-go@v5
+      with:
+        go-version-file: go.mod
     
     - name: login into github package registry
       if: steps.cache.outputs.cache-hit != 'true'
