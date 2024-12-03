@@ -54,6 +54,7 @@ jobs:
         push: true
         tags: ghcr.io/shindouj/dumb:latest
         build-args: release=1
+        no-cache-filters: "build"
     
     - name: Set cache key
       if: steps.cache.outputs.cache-hit != 'true'
