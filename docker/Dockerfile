@@ -10,7 +10,7 @@ RUN make build
 
 ###############################################################
 
-FROM alpine:3.19
+FROM alpine:3.21
 
 LABEL org.opencontainers.image.source="https://github.com/rramiachraf/dumb"
 LABEL org.opencontainers.image.url="https://github.com/rramiachraf/dumb"
